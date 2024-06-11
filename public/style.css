@@ -1,0 +1,17 @@
+.blog-box {
+    margin: 10px 0 10px 20px;
+    background-color: rgb(197, 248, 248);
+    padding: 20px;
+}
+
+.tag-span {
+    font-weight: 900;
+}
+
+.blog-container {
+    margin: 3rem;
+    padding: 6px;
+    box-shadow: 3px 3px 4px 5px rgb(219, 217, 217);
+    display: flex;
+    flex-direction: column;
+}

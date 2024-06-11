@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= blog.title %>
+    </title>
+</head>
+
+<body>
+    <div class="blog-container" style="margin: 3rem; padding: 6px; box-shadow: 3px 3px 4px 5px black; display: flex; flex-direction: column; ">
+        <h1>
+            <%= blog.title %>
+        </h1>
+        <div>
+            <span>Tags : </span>
+            <% for(let tag of blog.tags){%>
+                <span>
+                    <%= tag %>
+                </span> &nbsp;&nbsp;&nbsp;
+                <%}%>
+        </div>
+
+        <h3>Author:
+            <%= blog.author %>
+        </h3>
+
+        <hr style="margin: 0 20% 0 20%;">
+        <div>
+            <p>
+                <%= blog.content %>
+            </p>
+        </div>
+
+        <hr style="margin: 0 20% 0 20%;">
+        <br><br><br>
+        <div>
+            <span>Likes :</span>
+            <span>
+                <%= blog.likes %>
+            </span>
+
+            <form action="/blogs/<%= blog._id %>/like" method="POST">
+                <button type="submit">Like</button>
+            </form>
+
+            <br><br>
+
+            <span>Comments : </span>
+            <% for(let comment of blog.comments){%>
+                <p>
+                    <%= comment.content %>
+                </p> &nbsp;&nbsp;&nbsp;
+                <%}%>
+
+        </div>
+        <br><br>
+        <form action="/blogs" method="get">
+            <button type="submit">Home</button>
+        </form>
+    </div>
+</body>
+
+</html>

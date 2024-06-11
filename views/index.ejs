@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogs</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <%for(let blog of blogs){%>
+        <div class="blog-box">
+            <h3>
+                <%= blog.title %>
+            </h3>
+            <h4>Author :
+                <%= blog.author %>
+            </h4>
+
+            <div class="tags">
+                <span class="tag-span">Tags : </span>
+                <% for(let tag of blog.tags){%>
+                    <span>
+                    <%= tag %>
+                </span> &nbsp;&nbsp;&nbsp;
+                    <%}%>
+            </div>
+            <br>
+            <a href="/blogs/<%=blog._id %>">Read more...</a>
+        </div>
+        <hr>
+        <%}%>
+
+            <form action="/blogs/new" method="get">
+                <button type="submit">Add Blog</button>
+            </form>
+</body>
+
+</html>
