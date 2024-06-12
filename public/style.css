@@ -1,7 +1,23 @@
 .blog-box {
-    margin: 10px 0 10px 20px;
+    margin: 10px 35px 35px 35px;
     background-color: rgb(197, 248, 248);
     padding: 20px;
+    border-radius: 7px;
+}
+
+.new-blog {
+    margin: 30px 0 15px 35px;
+}
+
+.btn {
+    background-color: rgb(54, 132, 209);
+    color: white;
+    border: none;
+    border-radius: 6px;
+}
+
+.read-more {
+    text-decoration: none;
 }
 
 .tag-span {

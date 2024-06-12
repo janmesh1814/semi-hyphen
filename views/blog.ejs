@@ -7,10 +7,11 @@
     <title>
         <%= blog.title %>
     </title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div class="blog-container" style="margin: 3rem; padding: 6px; box-shadow: 3px 3px 4px 5px black; display: flex; flex-direction: column; ">
+    <div class="blog-container" style="margin: 3rem; padding: 6px; box-shadow: 3px 3px 4px 5px rgb(205, 203, 203); display: flex; flex-direction: column; text-align: center; border-radius: 5px;">
         <h1>
             <%= blog.title %>
         </h1>
@@ -23,13 +24,20 @@
                 <%}%>
         </div>
 
-        <h3>Author:
-            <%= blog.author %>
-        </h3>
+        <div>
+            <h3>Author:
+                <%= blog.author %>
+            </h3>
+
+            <p>
+                <%= blog.createdAt.toLocaleString() %>
+            </p>
+        </div>
+
 
         <hr style="margin: 0 20% 0 20%;">
         <div>
-            <p>
+            <p style="text-align: center;">
                 <%= blog.content %>
             </p>
         </div>
@@ -49,11 +57,32 @@
             <br><br>
 
             <span>Comments : </span>
-            <% for(let comment of blog.comments){%>
+            <!-- <% for(let comment of blog.comments){%>
                 <p>
                     <%= comment.content %>
                 </p> &nbsp;&nbsp;&nbsp;
-                <%}%>
+                <%}%> -->
+            <span>Comments : </span>
+            <% if (blog.comments && blog.comments.length > 0) { %>
+                <% blog.comments.forEach(comment => { %>
+                    <p>
+                        <%= comment.author %>:
+                            <%= comment.content %>
+                    </p>
+                    <% }); %>
+                        <% } else { %>
+                            <p>No comments available.</p>
+                            <% } %>
+                                <form action="/blogs/<%= blog._id %>/comment" method="POST">
+                                    <label for="author">Author : </label>
+                                    <input type="text" name="author" required>
+                                    <label for="content">Comment : </label>
+                                    <input type="text" name="content" placeholder="Add comment" required>
+
+                                    <button type="submit">Add Comment</button>
+                                </form>
+
+                                <br><br>
 
         </div>
         <br><br>

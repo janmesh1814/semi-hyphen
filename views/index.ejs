@@ -9,17 +9,32 @@
 </head>
 
 <body>
+
+    <div class="new-blog" ">
+        <form action="/blogs/new " method="get ">
+            <button class="btn " type="submit ">Add Blog</button>
+        </form>
+    </div>
+    
     <%for(let blog of blogs){%>
-        <div class="blog-box">
+        <div class="blog-box ">
             <h3>
                 <%= blog.title %>
             </h3>
-            <h4>Author :
-                <%= blog.author %>
-            </h4>
+            <div>
+                <h4>Author :
+                    <%= blog.author %>
+                </h4>
 
-            <div class="tags">
-                <span class="tag-span">Tags : </span>
+                <p>
+                    Created on:
+                    <%= blog.createdAt.toLocaleString() %>
+                </p>
+            </div>
+
+
+            <div class="tags ">
+                <span class="tag-span ">Tags : </span>
                 <% for(let tag of blog.tags){%>
                     <span>
                     <%= tag %>
@@ -27,14 +42,20 @@
                     <%}%>
             </div>
             <br>
-            <a href="/blogs/<%=blog._id %>">Read more...</a>
-        </div>
-        <hr>
-        <%}%>
+            <a class="read-more " href="/blogs/<%=blog._id %>">Read more...</a>
+        <br><br>
+        <form action="/blogs/<%=blog._id %>/edit" method="get">
+            <button class="btn" type="submit">Edit</button>
+        </form>
+        <br>
+        <form action="/blogs/<%=blog._id %>/destroy" method="get">
+            <button class="btn" type="submit">Delete</button>
+        </form>
+    </div>
+    <!-- <hr> -->
+    <%}%>
 
-            <form action="/blogs/new" method="get">
-                <button type="submit">Add Blog</button>
-            </form>
+
 </body>
 
 </html>

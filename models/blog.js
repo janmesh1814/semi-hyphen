@@ -32,10 +32,6 @@ const blogSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    updatedAt: {
-        type: Date,
-        default: Date.now
-    },
 
     tags: [String],
     comments: [commentSchema],
@@ -43,7 +39,7 @@ const blogSchema = new Schema({
         type: Number,
         default: 0
     },
-});
+}, { timestamps: true });
 
 blogSchema.pre('save', function(next) {
     this.updatedAt = Date.now();
@@ -51,5 +47,5 @@ blogSchema.pre('save', function(next) {
 });
 
 const Blog = mongoose.model('Blog', blogSchema);
-
-module.exports = Blog;
+const Comment = mongoose.model('Comment', commentSchema);
+module.exports = { Blog, Comment };
