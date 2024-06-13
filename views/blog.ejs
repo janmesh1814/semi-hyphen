@@ -57,12 +57,6 @@
             <br><br>
 
             <span>Comments : </span>
-            <!-- <% for(let comment of blog.comments){%>
-                <p>
-                    <%= comment.content %>
-                </p> &nbsp;&nbsp;&nbsp;
-                <%}%> -->
-            <span>Comments : </span>
             <% if (blog.comments && blog.comments.length > 0) { %>
                 <% blog.comments.forEach(comment => { %>
                     <p>
