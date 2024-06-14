@@ -90,12 +90,11 @@ app.post("/register", async(req, res) => {
 
         if (user) {
             return res.status(400).send("Username already taken");
-        }
+        };
 
-        const hashedPassword = await bcrypt.hash(password, 10);
         user = new User({
             username,
-            password: hashedPassword
+            password
         });
 
         await user.save();
